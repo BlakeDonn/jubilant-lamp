@@ -25,8 +25,7 @@ class UrlForm extends Component {
       long_url: this.state.urlToShorten,
       title: this.state.title,
     });
-    console.log(response)
-
+    this.props.updateFormView(response)
     this.clearInputs();
   };
 
