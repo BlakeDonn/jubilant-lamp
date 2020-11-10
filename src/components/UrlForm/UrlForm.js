@@ -17,11 +17,11 @@ class UrlForm extends Component {
 
   handleSubmit = e => {
     e.preventDefault();
-    this.clearInputs();
     postUrls({
       long_url: this.state.urlToShorten,
       title: this.state.title,
     })
+    this.clearInputs();
   }
 
   clearInputs = () => {
