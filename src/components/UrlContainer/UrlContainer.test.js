@@ -1,11 +1,13 @@
 import { render, screen, waitFor } from "@testing-library/react";
 import React from 'react'
 import "@testing-library/jest-dom";
-import { UrlContainer } from "./UrlContainer";
+import  UrlContainer  from "./UrlContainer";
 
 
+describe("UrlContainer", () =>{
+let testUrls;
 beforeEach(() => { 
-  const testUrls = [{
+   testUrls = [{
     id: 1,
     long_url: "https://longUrl",
     short_url: "https://shortUrl",
@@ -24,10 +26,10 @@ beforeEach(() => {
     title: "testTitle3"
   }]
 });
-
-describe("UrlContainer", () =>{
   it ("Should render headings of urls", () =>{
-    render(<UrlContainer />)
-    
+    render(<UrlContainer urls={testUrls}/>)
+    expect(screen.getByText("testTitle")).toBeInTheDocument()
+    expect(screen.getByText("testTitle2")).toBeInTheDocument()
+    expect(screen.getByText("testTitle3")).toBeInTheDocument()
   })
 })
