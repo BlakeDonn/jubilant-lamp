@@ -28,7 +28,7 @@ describe("UrlContainer", () => {
     );
   });
 
-  it("Should fire o", async () => {
+  it("Should update DOM on successful post", async () => {
     const mockUpdateFormView = jest.fn();
     postUrls.mockResolvedValue({
       id: 14,
