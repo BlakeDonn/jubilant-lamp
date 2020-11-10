@@ -14,3 +14,10 @@ export const postUrls = async (res) => {
   });
   return await response.json();
 };
+
+export const deleteUrl = async (res) => {
+  const response = await fetch(`http://localhost:3001/api/v1/urls/${res}`, {
+    method: "DELETE",
+  });
+    console.log(response)
+};
