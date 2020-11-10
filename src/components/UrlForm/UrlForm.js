@@ -17,16 +17,15 @@ class UrlForm extends Component {
 
   handleSubmit = async (e) => {
     e.preventDefault();
-    if (!this.state.title || !this.state.urlToShorten){
-    this.clearInputs();
-      return alert("please fill out title and url")
-    }
     const response = await postUrls({
       long_url: this.state.urlToShorten,
       title: this.state.title,
     });
+    if (response.long_url.length && response.short_url.length && response.title.length){
     this.props.updateFormView(response)
-    this.clearInputs();
+    return this.clearInputs();
+    }
+   alert("bad request please try again") 
   };
 
   clearInputs = () => {
