@@ -48,4 +48,12 @@ beforeEach(() => {
     expect(screen.getByTestId("testTitle3-button")).toBeInTheDocument()
   })
 
+  it ("User should be able to click delete button", () =>{
+    const mockDeleteUrl = jest.fn()
+    render(<UrlContainer urls={testUrls} deleteUrl={mockDeleteUrl}/>)
+    userEvent.click(screen.getByTestId("testTitle-button", {name: "Delete Me"}));
+    userEvent.click(screen.getByTestId("testTitle2-button", {name: "Delete Me"}));
+    userEvent.click(screen.getByTestId("testTitle3-button", {name: "Delete Me"}));
+    expect(mockDeleteUrl).toHaveBeenCalledTimes(3)
+  })
 })
