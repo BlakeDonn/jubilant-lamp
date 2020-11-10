@@ -17,12 +17,16 @@ export class App extends Component {
       .then(data => this.setState({urls: data.urls}))
   }
 
+  updateFormView = (url) =>{
+    this.setState({urls: [...this.state.urls, url]})
+  }
+
   render() {
     return (
       <main className="App">
         <header>
           <h1>URL Shortener</h1>
-          <UrlForm />
+          <UrlForm updateFormView={this.updateFormView}/>
         </header>
 
         <UrlContainer urls={this.state.urls}/>
