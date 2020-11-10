@@ -32,4 +32,11 @@ beforeEach(() => {
     expect(screen.getByText("testTitle2")).toBeInTheDocument()
     expect(screen.getByText("testTitle3")).toBeInTheDocument()
   })
+
+  it ("Should render anchor tags of shortened url", () =>{
+    render(<UrlContainer urls={testUrls}/>)
+    expect(screen.getByTestId("testTitle-test").href).toBe('https://shorturl/')
+    expect(screen.getByTestId("testTitle2-test").href).toBe('https://shorturl2/')
+    expect(screen.getByTestId("testTitle3-test").href).toBe('https://shorturl3/')
+  })
 })
