@@ -43,4 +43,13 @@ describe("UrlContainer", () => {
     await waitFor(() => expect(mockUpdateFormView).toHaveBeenCalledTimes(1));
     expect(mockUpdateFormView).toHaveBeenCalledTimes(1);
   });
+
+  it("User should not be able to post without filling out both forms", async () => {
+    const mockUpdateFormView = jest.fn();
+    render(<UrlForm updateFormView={mockUpdateFormView} />);
+    userEvent.type(screen.getByPlaceholderText("Title..."), "TestTitle");
+    userEvent.click(screen.getByRole("button", { name: "Shorten Please!" }));
+    await waitFor(() => expect(screen.getByText("Please fill out both fields")).toBeInTheDocument());
+    expect(screen.getByText("Please fill out both fields")).toBeInTheDocument();
+  });
 });

@@ -8,6 +8,7 @@ class UrlForm extends Component {
     this.state = {
       title: "",
       urlToShorten: "",
+      error: ""
     };
   }
 
@@ -17,6 +18,9 @@ class UrlForm extends Component {
 
   handleSubmit = async (e) => {
     e.preventDefault();
+    if(this.state.title === '' || this.state.urlToShorten === ''){
+      return this.setState({error: "Please fill out both fields"})
+    }
     const response = await postUrls({
       long_url: this.state.urlToShorten,
       title: this.state.title,
@@ -25,7 +29,6 @@ class UrlForm extends Component {
     this.props.updateFormView(response)
     return this.clearInputs();
     }
-   alert("bad request please try again") 
   };
 
   clearInputs = () => {
@@ -52,6 +55,7 @@ class UrlForm extends Component {
         />
 
         <button onClick={(e) => this.handleSubmit(e)}>Shorten Please!</button>
+        <p>{this.state.error}</p>
       </form>
     );
   }
