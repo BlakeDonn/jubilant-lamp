@@ -6,7 +6,7 @@ const UrlContainer = props => {
     return (
       <div className="url">
         <h3>{url.title}</h3>
-        <a data-testid={"anchor-test"} href={url.short_url} target="blank">{url.short_url}</a>
+        <a data-testid={`${url.title}-test`} href={url.short_url} target="blank">{url.short_url}</a>
         <p>{url.long_url}</p>
       </div>
     )
