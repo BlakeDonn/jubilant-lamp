@@ -9,7 +9,7 @@ const UrlContainer = props => {
         <h3>{url.title}</h3>
         <a data-testid={`${url.title}-test`} href={url.short_url} target="blank">{url.short_url}</a>
         <p>{url.long_url}</p>
-        <button onClick={()=>props.deleteUrl(url.id)}>Delete me</button>
+        <button data-testid={`${url.title}-button`}onClick={()=>props.deleteUrl(url.id)}>Delete me</button>
       </div>
     )
   });

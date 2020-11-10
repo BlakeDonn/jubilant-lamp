@@ -1,5 +1,6 @@
 import { render, screen, waitFor } from "@testing-library/react";
 import React from 'react'
+import userEvent from "@testing-library/user-event";
 import "@testing-library/jest-dom";
 import  UrlContainer  from "./UrlContainer";
 
@@ -39,4 +40,12 @@ beforeEach(() => {
     expect(screen.getByTestId("testTitle2-test").href).toBe('https://shorturl2/')
     expect(screen.getByTestId("testTitle3-test").href).toBe('https://shorturl3/')
   })
+
+  it ("Should render with delete buttons for each url", () =>{
+    render(<UrlContainer urls={testUrls}/>)
+    expect(screen.getByTestId("testTitle-button")).toBeInTheDocument()
+    expect(screen.getByTestId("testTitle2-button")).toBeInTheDocument()
+    expect(screen.getByTestId("testTitle3-button")).toBeInTheDocument()
+  })
+
 })
