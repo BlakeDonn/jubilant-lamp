@@ -4,12 +4,13 @@ export const getUrls = () => {
   );
 };
 
-export const postUrls = async () => {
-  const response = await fetch("https://fe-cors-proxy.herokuapp.com", {
+export const postUrls = async (res) => {
+  const response = await fetch("http://localhost:3001/api/v1/urls", {
     method: "POST",
-    headers: {
-      "Target-URL": "https://randomfox.ca/floof",
+    headers:{
+      'Content-Type': 'application/json'
     },
+    body: JSON.stringify(res)
   });
   return await response.json();
 };
